@@ -1,0 +1,187 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+void suma(int *numero1, int *numero2, int *respuesta){
+	*respuesta =*numero2 + *numero1;
+}
+void resta(int *numero1, int *numero2, int *respuesta){
+  *respuesta=*numero1-*numero2;
+}
+void multiplicacion(int *numero1, int *numero2, int *respuesta){
+  *respuesta=*numero1**numero2;
+}
+void division(int *valor1, int *valor2, double *respuesta){
+  *respuesta=*valor1 / *valor2;
+}
+
+void suma2(int *numero1,  int *respuesta){
+	*respuesta =*respuesta + *numero1 ;
+}
+void resta2(int *numero1, int *respuesta){
+  *respuesta=*respuesta - *numero1;
+}
+void multiplicacion2(int *numero1, int *respuesta){
+  *respuesta=*respuesta**numero1;
+}
+void division2(double *valor1, double *respuesta){
+  *respuesta=*respuesta/ *valor1;
+}
+
+int main(){
+  int cantidad;
+	int a;
+  int b;
+  int *a1;
+  int *b1;
+  int opcion; 
+  int menu;
+	int *res;
+  double *resp;
+  double _a;
+  double *_a1;
+  menu=1;
+  while(menu==1){
+	  printf("\n Elige una Opción \n 1. Suma \n 2. Resta \n 3. Multiplicación \n 4. División \n 5. Potencia \n 0. Salir");
+    printf("\n");
+    scanf("%d", &opcion);
+    if(opcion==0){
+      printf("Fin del Programa");
+      menu=0;
+      return 0;
+    }
+	  if(opcion==1){
+      //asigna espacio en memoria para los punteros
+      a1=malloc(sizeof(int));
+      b1=malloc(sizeof(int));
+      //guarda valores en variables a y b
+      printf("Ingrese un número:\n");
+	    scanf("%d", &a);
+      printf("Ingrese otro número:\n");
+	    scanf("%d", &b);
+      //asigna los espacios de memoria de a y b a los punteros a1 y b1
+      a1=&a;
+      b1=&b;
+      res=malloc(sizeof(int));
+      suma(a1,b1,res);
+      printf("Desea seguir ingresando números para sumar? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+      while (cantidad== 1){
+      printf("%d", *res);
+      printf("+...");
+	    scanf("%d", &a);
+      a1=&a;
+      suma2(a1,res);
+      printf("Desea seguir ingresando números para sumar? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+      }
+      printf("El resultado de su suma es: %i\n", *res);
+    }
+    else if(opcion==2){
+      a1=malloc(sizeof(int));
+      b1=malloc(sizeof(int));
+      printf("Ingrese un número:\n");
+	    scanf("%d", &a);
+      printf("Ingrese otro número:\n");
+	    scanf("%d", &b);
+      a1=&a;
+      b1=&b;
+      res=malloc(sizeof(int));
+      resta(a1,b1,res);
+      printf("Desea seguir ingresando números para restar? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+      while (cantidad== 1){
+      printf("%d", *res);
+      printf("-...");
+	    scanf("%d", &a);
+      a1=&a;
+      resta2(a1,res);
+      printf("Desea seguir ingresando números para restar? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+      
+      }
+      printf("El resultado de su resta es: %i\n", *res);
+    }
+    else if(opcion==3){
+      a1=malloc(sizeof(int));
+      b1=malloc(sizeof(int));
+      printf("Ingrese un número:\n");
+	    scanf("%d", &a);
+      printf("Ingrese otro número:\n");
+	    scanf("%d", &b);
+      a1=&a;
+      b1=&b;
+      res=malloc(sizeof(int));
+      multiplicacion(a1,b1,res);
+      printf("Desea seguir ingresando números para multiplicar? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+      while (cantidad== 1){
+      printf("%d", *res);
+      printf("x...");
+	    scanf("%d", &a);
+      a1=&a;
+      multiplicacion2(a1,res);
+      printf("Desea seguir ingresando números para multiplicar? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+
+      }
+      printf("El resultado de su multiplicacion es: %i\n", *res);
+    }
+    else if(opcion==4){
+      a1=malloc(sizeof(int));
+      b1=malloc(sizeof(int));
+      printf("Ingrese un número:\n");
+	    scanf("%d", &a);
+      printf("Ingrese otro número:\n");
+	    scanf("%d", &b);
+      a1=&a;
+      b1=&b;
+      resp=malloc(sizeof(double));
+      division(a1,b1,resp);
+      printf("Desea seguir ingresando números para dividir? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+      while (cantidad== 1){
+      _a1=malloc(sizeof(double));
+      printf("%lf", *resp);
+      printf("/...");
+	    scanf("%lf", &_a);
+      _a1=&_a;
+      division2(_a1,resp);
+      printf("Desea seguir ingresando números para dividir? si=1/no=2:\n");
+	    scanf("%d", &cantidad);
+      } 
+      printf("El resultado de su division es: %lf\n", *resp);
+    }
+    else if (opcion==5){
+      a1=malloc(sizeof(int));
+      b1=malloc(sizeof(int));
+      printf("Ingrese base:\n");
+	    scanf("%d", &a);
+      printf("Ingrese exponente:\n");
+	    scanf("%d", &b);
+      a1=&a;
+      b1=&b;
+      res=malloc(sizeof(int));
+      *res=pow(*a1,*b1);
+
+
+      printf("Desea agregar exponente a %d? si=1/no=2:\n",*res);
+	    scanf("%d", &cantidad);
+      while (cantidad== 1){
+      printf("%d", *res);
+      printf(" elevado a...");
+	    scanf("%d", &a);
+      a1=&a;
+      *res=pow(*res,*a1);
+      printf("Desea agregar exponente a %d? si=1/no=2:\n",*res);
+	    scanf("%d", &cantidad);
+
+      }
+    }
+    
+    else {
+      printf("La opción ingresada no es válida, por favor inténtelo nuevamente.");
+   
+ }
+  }
+  return 0;
+}
